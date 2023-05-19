@@ -6,6 +6,7 @@ import cors from 'cors'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import * as dotenv from 'dotenv'
+import router from './routes/messages.js'
 dotenv.config()
 
 //Configuracion mongoose
@@ -28,6 +29,7 @@ app.use(cors())
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
+app.use('/api', router)
 
 //Conexion BD 
 mongoose.connect(url,{useNewUrlParser: true}).then(() => {
