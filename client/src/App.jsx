@@ -26,11 +26,17 @@ function App() {
                   <button className='btn btn-success mx-3' type='submit' id='btn-message'>Enviar</button>
                 </div>
               </form>
-
-
-
             </div>
           </div>
+
+          {/* Chat messages */}
+
+          <div className='card mt-3 mb-3' id='content-chat'>
+              <div className='card-body'>
+
+              </div>
+          </div>
+
         </div>
       </div>
     </>
