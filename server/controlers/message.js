@@ -28,7 +28,7 @@ let controller = {
         let query = Message.find({})
         query.sort('-_id').then(( messages) => {
             return res.status(200).send({
-                status:'Succes',
+                status:'Success',
                 messages
             })
         }).catch((err) => {
