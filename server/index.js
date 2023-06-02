@@ -7,6 +7,7 @@ import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import * as dotenv from 'dotenv'
 import router from './routes/messages.js'
+import message from './models/message.js'
 dotenv.config()
 
 //Configuracion mongoose
@@ -19,7 +20,7 @@ const PORT = 4001
 //Server HTTP
 const server = http.createServer(app)
 const io = new socketServer (server, {
-    core:{
+    cors:{
         origin:'*'
     }
 })
@@ -30,6 +31,19 @@ app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 app.use('/api', router)
+
+io.on('connection', (socket) => {
+    console.log(socket.id)
+    console.log('cliente conectado')
+
+    socket.on('message',(message,nickname) =>{
+        //Envio al resto de clientes 
+        socket.broadcast.emit('message', {
+            body: message,
+            from: nickname
+        })
+    })
+})
 
 //Conexion BD 
 mongoose.connect(url,{useNewUrlParser: true}).then(() => {
