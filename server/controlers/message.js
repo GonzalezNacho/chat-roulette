@@ -1,9 +1,9 @@
 import Message from '../models/message.js'
 
 let controller = {
-    save: (req, res) => {
+    save: async (req, res) => {
         let params = req.body
-        let message = new Message()
+        let message = await Message.create(params);
         message.message = params.message
         message.from = params.from
 
