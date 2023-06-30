@@ -1,10 +1,26 @@
-import mongoose from 'mongoose'
+const { Model, DataTypes } = require('sequelize')
+const { sequelize } = require('../utils/db')
 
-let Schema = mongoose.Schema
+class Messages extends Model{ }
 
-let messageSchema = new Schema({
-    message: String,
-    from: String
+Messages.init({
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    messages: {
+        type: DataTypes.TEXT,
+        allowNull: false
+    },
+    from:{
+        type: DataTypes.STRING(200),
+        allowNull: false
+    }
+}, {
+    sequelize,
+    underscored:true,
+    modelName: 'messages'
 })
 
-export default mongoose.model('Message', messageSchema)
+module.exports = Messages

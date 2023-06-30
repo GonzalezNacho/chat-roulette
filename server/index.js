@@ -7,7 +7,6 @@ import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import * as dotenv from 'dotenv'
 import router from './routes/messages.js'
-import message from './models/message.js'
 dotenv.config()
 
 //Configuracion mongoose
