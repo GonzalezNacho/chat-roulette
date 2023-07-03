@@ -1,35 +1,24 @@
-import express from 'express'
-import morgan from 'morgan'
-import { Server as socketServer } from 'socket.io'
 import http from 'http'
-import cors from 'cors'
-import mongoose from 'mongoose'
-import bodyParser from 'body-parser'
-import * as dotenv from 'dotenv'
-import router from './routes/messages.js'
-dotenv.config()
+import app from './app.js'
+import { connectDb, sequelize } from './utils/db.js'
+import { Server as socketServer } from 'socket.io'
 
-//Configuracion mongoose
-const url = process.env.URL
-mongoose.Promise = global.Promise
-
-const app = express()
 const PORT = 4001
 
-//Server HTTP
-const server = http.createServer(app)
+const server = http.createServer(app);
 const io = new socketServer (server, {
     cors:{
         origin:'*'
     }
 })
 
-//Middleware
-app.use(cors())
-app.use(morgan('dev'))
-app.use(bodyParser.urlencoded({extended:false}))
-app.use(bodyParser.json())
-app.use('/api', router)
+connectDb()
+
+sequelize.sync().then(() => {
+    console.log('\n\t\t\t\t\t\t******************\n\t\t\t\t\t\t* Tablas creadas *\n\t\t\t\t\t\t******************\n')
+}).catch((error) => {
+    console.log('error', error)
+})
 
 io.on('connection', (socket) => {
     console.log(socket.id)
@@ -44,10 +33,6 @@ io.on('connection', (socket) => {
     })
 })
 
-//Conexion BD 
-mongoose.connect(url,{useNewUrlParser: true}).then(() => {
-    console.log ('Conexion exitosa a la base de datos')
-    server.listen(PORT, () => {
-        console.log('Servidor escuchando en el puerto: ', PORT)
-    })
-})
+server.listen(PORT, () => {
+    console.log("server running");
+});

@@ -1,9 +1,9 @@
-import Message from '../models/message.js'
+import Messages from '../models/message.js'
 
 let controller = {
     save: async (req, res) => {
         let params = req.body
-        let message = await Message.create(params);
+        let message = await Messages.create(params);
         message.message = params.message
         message.from = params.from
 

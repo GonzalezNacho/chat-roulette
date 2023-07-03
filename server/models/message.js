@@ -23,4 +23,4 @@ Messages.init({
     modelName: 'messages'
 })
 
-module.exports = Messages
+module.exports.default = Messages
