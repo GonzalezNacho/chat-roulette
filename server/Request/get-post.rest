@@ -6,6 +6,6 @@ POST http://localhost:4001/api/save
 Content-Type: application/json
 
 {
-  "message":"Hola 3",
+  "messages":"Hola 3",
   "from":"Nacho"
 }

@@ -1,9 +1,9 @@
 import * as dotenv from 'dotenv'
-import sequelize  from 'sequelize'
+import Sequelize  from 'sequelize'
 
 dotenv.config()
 
-const sequelizeDb = new sequelize(
+export const sequelize = new Sequelize(
     process.env.DB,                 //nombre de la base de datos
     process.env.USERDB,             //usuario de la base de datos
     process.env.PASSWORDDB,         //contraseña de la base de datos
@@ -13,15 +13,12 @@ const sequelizeDb = new sequelize(
         dialect: 'mysql'
     }
 )
-
-const connectDb = async() => {
+export const connectDb = async() => {
     try {
-        await sequelizeDb.authenticate()
+        await sequelize.authenticate()
         console.log('conectado a la base de datos')
     } catch (error) {
         console.log('ERROR:', error)
         return process.exit()
     }
 }
-
-module.exports = { connectDb, sequelizeDb }

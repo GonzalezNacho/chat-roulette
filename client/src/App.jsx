@@ -35,7 +35,8 @@ function App() {
 
   if(!firstTime) {
     axios.get(url +'messages').then(res => {
-      setStoredMessages(res.data.messages)
+      let messagesDb = res.data.messages
+      setStoredMessages(messagesDb)
     })
     setFirstTime(true)
   }
@@ -57,7 +58,7 @@ function App() {
       //Petición HTTP por POST para guardar el mensaje
 
       axios.post( url + 'save', {
-        message: message,
+        messages: message,
         from: nickname
       })
 
@@ -119,7 +120,7 @@ function App() {
                   <div key={index} className={`d-flex p-3 ${message.from === nickname ? 'justify-content-end': 'justify-content-start'}`}>
                     <div className={`card mb-3 border-1 ${message.from === nickname ? 'bg-success bg-opacity-25': 'bg-light' }`}>
                       <div className='card-body'>
-                        <small className='text-muted'>{message.from}: {message.message}</small>
+                        <small className='text-muted'>{message.from}: {message.messages}</small>
                       </div>  
                     </div>
                   </div>

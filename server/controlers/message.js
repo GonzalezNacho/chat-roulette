@@ -1,3 +1,4 @@
+import { query } from 'express';
 import Messages from '../models/message.js'
 
 let controller = {
@@ -20,13 +21,12 @@ let controller = {
         })
     },
 
-    /* 
-    En la version nueva de Mongoose
-    en el exec() y el save() no se puede usar un callback
-    */
-    getMessages:( req,res) => {
-        let query = Message.find({})
-        query.sort('-_id').then(( messages) => {
+    getMessages:async ( req,res) => {
+        let query = await Messages.findAll()
+        .then(( messagesDb) => {
+            let messages = messagesDb.sort((a,b) => {
+                return b.id - a.id
+            })
             return res.status(200).send({
                 status:'Success',
                 messages
