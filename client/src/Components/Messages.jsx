@@ -9,8 +9,8 @@ export function Messages ({messages, nickname ='Yo'}) {
                             <div className={`card mb-3 border-1 ${message.from === nickname? 'bg-success bg-opacity-25': 'bg-light' }`}>
                                 <div className='card-body'>
                                 { nickname != 'Yo'
-                                    ? <small className='text-muted'>{message.from}:{message.messages}</small>
-                                    : <small className=''>{message.from}:{message.body}</small>
+                                    ? <small className='text-muted'>{message.from}: {message.messages}</small>
+                                    : <small className=''>{message.from}: {message.body}</small>
                                 }
                                 </div>  
                             </div>
