@@ -58,12 +58,9 @@ function App() {
           {/* Chat messages */}
 
           <div className='card mt-3 mb-3' id='content-chat'>
-              <div className='card-body'>
                 <Messages messages={messages}/>
-                {/* Chat Stored messages */}
-                <small className='text-center text-muted'>... Mensajes guardados ...</small>
+                <small className='text-center text-muted p-3'>... Mensajes guardados ...</small>
                 <Messages messages={storedMessages} nickname={nickname}/>
-              </div>
           </div>
         </div>
       </div>
