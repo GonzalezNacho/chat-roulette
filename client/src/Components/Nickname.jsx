@@ -1,22 +1,29 @@
 import { useState } from "react"
+import LogoutButton from "./Logout"
+import LoginButton  from "./Login"
+import { useAuth0 } from "@auth0/auth0-react";
 
-export function Nickname ({nickname, setNickname}) {
+export function Nickname ({ setNickname}) {
 
 
     const [disabled, setDisabled] = useState(false)
+    const { user, isAuthenticated, isLoading} = useAuth0();
 
-    const nicknameSubmit = (e) => {
-        e.preventDefault()
-        setNickname(nickname)
-        setDisabled(true)
+    if (isAuthenticated) {
+        setNickname(user.name)
     }
 
-    return (
-        <form onSubmit={nicknameSubmit}>
-            <div className='d-flex mb-3'>
-                <input type="text" className='form-control' placeholder='Nickname...' id='nickname' onChange={e => setNickname(e.target.value)} disabled={disabled}/>
-                <button className='btn btn-success mx-3' type='submit' id='btn-nickname' disabled={disabled}>Establecer</button>
-            </div>
-        </form>
-    )
+    return ( 
+            isAuthenticated ? (
+                <> 
+                    <div>
+                        <img src={user.picture} alt={user.name} />
+                        <h2>{user.name}</h2>
+                        <p>{user.email}</p>
+                    </div>
+                    <LogoutButton/>
+                </>
+            ) : (
+                <LoginButton/>
+        ))
 }
