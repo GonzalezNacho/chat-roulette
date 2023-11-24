@@ -20,12 +20,31 @@ sequelize.sync().then(() => {
     console.log('error', error)
 })
 
+let rooms = 0;
+
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+
 io.on('connection', (socket) => {
     console.log(socket.id)
     console.log('cliente conectado')
 
+    socket.on('create room', () => {
+        socket.join("room" + rooms)
+        rooms++;
+    })
+
+    socket.on('join room', () => {
+        socket.join('room' + getRandomArbitrary(0, rooms))
+    })
+
     socket.on('message',(message,nickname) =>{
         //Envio al resto de clientes 
+        const roomsDeEsteSocket = Object.keys(socket.rooms);
+        console.log('El socket está en las siguientes salas:', roomsDeEsteSocket);
+        
         socket.broadcast.emit('message', {
             body: message,
             from: nickname

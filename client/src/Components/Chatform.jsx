@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-
 export function Chatform ({nickname, message, messages, setMessage, setMessages, socket, url }) {
 
     const handlerSubmit = e => {

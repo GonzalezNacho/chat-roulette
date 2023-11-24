@@ -1,13 +1,10 @@
-import { useState } from "react"
 import LogoutButton from "./Logout"
 import LoginButton  from "./Login"
 import { useAuth0 } from "@auth0/auth0-react";
 
 export function Nickname ({ setNickname}) {
 
-
-    const [disabled, setDisabled] = useState(false)
-    const { user, isAuthenticated, isLoading} = useAuth0();
+    const { user, isAuthenticated} = useAuth0();
 
     if (isAuthenticated) {
         setNickname(user.name)
