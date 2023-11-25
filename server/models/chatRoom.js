@@ -9,8 +9,8 @@ ChatRoom.init({
         primaryKey: true,
         autoIncrement: true
     },
-    users: {
-        type: DataTypes.INTEGER,
+    name: {
+        type: DataTypes.STRING(200),
         allowNull: false
     }
 }, {
@@ -19,4 +19,4 @@ ChatRoom.init({
     modelName: 'chatroom'
 })
 
-module.exports = ChatRoom
+export default ChatRoom;
