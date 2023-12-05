@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize')
-const { sequelize } = require('../utils/db')
+import { Model, DataTypes } from 'sequelize'
+import { sequelize } from '../utils/db.js'
 
 class ChatRoom extends Model{}
 
@@ -19,4 +19,4 @@ ChatRoom.init({
     modelName: 'chatroom'
 })
 
-export default ChatRoom;
+export  {ChatRoom};

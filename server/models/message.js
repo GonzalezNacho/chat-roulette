@@ -23,4 +23,4 @@ Messages.init({
     modelName: 'messages'
 })
 
-export default Messages;
+export {Messages};

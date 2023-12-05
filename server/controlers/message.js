@@ -1,5 +1,5 @@
 import { query } from 'express';
-import Messages from '../models/message.js'
+import {Messages} from '../models/index.js'
 
 let controller = {
     save: async (req, res) => {

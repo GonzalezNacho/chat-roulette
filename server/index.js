@@ -22,8 +22,8 @@ sequelize.sync().then(() => {
 
 let rooms = 0;
 
-function getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
 }
 
 
@@ -37,7 +37,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on('join room', () => {
-        socket.join('room' + getRandomArbitrary(0, rooms))
+        socket.join('room' + getRandomInt(rooms))
     })
 
     socket.on('message',(message,nickname) =>{
