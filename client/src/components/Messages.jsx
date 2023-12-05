@@ -1,3 +1,5 @@
+import { PropTypes } from 'prop-types'
+
 export function Messages ({messages, nickname ='Yo'}) {
 
     return(
@@ -20,4 +22,9 @@ export function Messages ({messages, nickname ='Yo'}) {
             }
         </>
     )
+}
+
+Messages.propTypes = {
+    messages: PropTypes.array.isRequired,
+    nickname: PropTypes.string
 }
