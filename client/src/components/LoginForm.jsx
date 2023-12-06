@@ -1,4 +1,5 @@
 import { useState } from "react"
+import './LoginForm.css'
 
 export default function Login() {
     const [email, setEmail] = useState('')
@@ -10,8 +11,8 @@ export default function Login() {
     }
 
     return (
-        <div className="d-flex vh-100 justify-content-center align-items-center bg-primary">
-            <div className="p-3 bg-white w-25">
+        <div className="conteiner vh-100 d-flex justify-content-center align-items-center">
+            <div className="form p-4 w-25">
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label htmlFor="email">Email</label>
