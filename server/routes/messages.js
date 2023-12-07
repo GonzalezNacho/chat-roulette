@@ -1,9 +1,9 @@
 import express from 'express'
-import controller from '../controlers/message.js'
+import {save, getMessages} from '../controlers/message.js'
 
 const router = express.Router()
 
-router.post('/save', controller.save)
-router.get('/messages',controller.getMessages)
+router.post('/', save)
+router.get('/', getMessages)
 
 export default router

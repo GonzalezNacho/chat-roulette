@@ -19,7 +19,7 @@ export function Chatform ({nickname, socket, message, messages, setMessage, setM
     
             //Petición HTTP por POST para guardar el mensaje
     
-            axios.post( url + 'save', {
+            axios.post( url + 'messages/', {
                 messages: message,
                 from: nickname
             })

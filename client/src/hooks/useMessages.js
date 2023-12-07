@@ -4,7 +4,7 @@ import {ip, port} from '../assets/js/const'
 
 export function useMessages( {socket} ) {
     
-    const url = `${ip}:${port}/api/`
+    const url = `${ip}:${port}/`
     const [message, setMessage] = useState('')
     const [messages, setMessages] = useState([])
 
@@ -24,7 +24,7 @@ export function useMessages( {socket} ) {
     }, [messages])
 
     if(!firstTime) {
-        axios.get(url +'messages').then(res => {
+        axios.get(url +'messages/').then(res => {
             let messagesDb = res.data.messages
             setStoredMessages(messagesDb)
         })
