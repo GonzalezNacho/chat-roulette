@@ -2,13 +2,22 @@ import { useState } from "react"
 import './LoginForm.css'
 
 export default function Login() {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [body, setBody] = useState({email:'', password:''})
+
+    const inputChange = ({target}) => {
+        const {name, value} = target
+        setBody({
+            ...body,
+            [name]: value
+        })  
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        
+        console.log(body)
     }
+
+
 
     return (
         <div className="conteiner vh-100 d-flex justify-content-center align-items-center">
@@ -16,11 +25,11 @@ export default function Login() {
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label htmlFor="email">Email</label>
-                        <input type="email" placeholder="Enter Email" className="form-control" onChange={e => setEmail(e.target.value)}/>
+                        <input id='email' type="email" placeholder="Enter Email" className="form-control" name='email' value={body.email}  onChange={inputChange}/>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="password">Password</label>
-                        <input type="password" placeholder="Enter password" className="form-control" onChange={e => setPassword(e.target.value)}/>
+                        <input id='password' type="password" placeholder="Enter password" className="form-control" name='password' value={body.password} onChange={inputChange}/>
                     </div>
                     <button type="submit" className="btn btn-success">Login</button>
                 </form>

@@ -29,6 +29,10 @@ Users.init({
     email: {
         type: DataTypes.STRING(200),
         allowNull: false
+    }, 
+    password: {
+        type: DataTypes.STRING(200),
+        allowNull: false
     }
 }, {
     sequelize,
