@@ -1,15 +1,22 @@
 import {Users} from '../models/index.js'
+import { Op } from 'sequelize';
 
 const create = async (req, res) => {
     let params = req.body
-    let user = await Users.create(params);
-    user.name = params.name
-    user.lastname = params.lastname
-    user.user = params.user
-    user.email = params.email
-    user.password = params.password
-
-    user.save().then((user) => {
+    const [user, created] = await Users.findOrCreate({
+        where :{
+            [Op.or]: [
+                {email: params.email},
+                {user: params.user}
+            ]
+        },
+        defaults: {
+            name : params.name,
+            lastname : params.lastname,
+            password : params.password
+        }
+    })
+    .then(() => {
         return res.status(200).send({
             status:'Success',
             user
