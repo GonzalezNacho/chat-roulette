@@ -9,6 +9,7 @@ import ErrorPage from './routes/error-page.jsx';
 import { createBrowserRouter,RouterProvider } from "react-router-dom";
 import { useRef } from 'react';
 import Login from './components/LoginForm.jsx';
+import Register from './components/RegisterForm.jsx';
 
 function App() {
 
@@ -34,6 +35,10 @@ function App() {
     {
       path: "login",
       element: <Login/>
+    },
+    {
+      path:"register",
+      element: <Register/>
     }
   ]);
 
