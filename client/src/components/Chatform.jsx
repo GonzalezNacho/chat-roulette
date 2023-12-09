@@ -1,8 +1,9 @@
 import axios from 'axios'
 import {PropTypes} from 'prop-types'
+import { url } from '../assets/js/const'
 
 
-export function Chatform ({nickname, socket, message, messages, setMessage, setMessages, url }) { 
+export function Chatform ({nickname, socket, message, messages, setMessage, setMessages}) { 
 
     const handlerSubmit = e => {
             e.preventDefault()

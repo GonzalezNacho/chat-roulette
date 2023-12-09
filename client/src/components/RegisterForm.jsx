@@ -1,6 +1,6 @@
 import { useState } from "react"
-import axios, { Axios } from "axios"
-import { ip, port } from "../assets/js/const"
+import axios from "axios"
+import { url } from "../assets/js/const"
 import './LoginForm.css'
 
 export default function Register() {
@@ -15,11 +15,11 @@ export default function Register() {
     }
 
     const handleSubmit = (e) => {
-        const url = `${ip}:${port}/user`
         e.preventDefault()
-        console.log(body)
 
-        axios.post(url, body)
+        axios.post(url + 'user', body).then((res)=> {
+            alert(res.data.status)
+        })
     }
 
 

@@ -23,12 +23,12 @@ const create = async (req, res) => {
     .then(([user, created]) => {
         if (created) {
             return res.status(200).send({
-                status:'Success',
+                status:'Se creo el usuario correctamente',
                 user
             })
         } else {
             return res.status(200).send({
-                status:'El usuario ya existe',
+                status:'El usuario ya se encuentra registrado',
                 user
             })
         }
@@ -36,6 +36,37 @@ const create = async (req, res) => {
         return res.status(404).send({
             status:'error',
             message: `no ha sido posible mandar el mensaje: ${error}`
+        })
+    })
+}
+
+const login = async ( req,res) => {
+    const params = req.body
+    let options = {
+        where: { 
+            [Op.and]: [
+                {email: params.email},
+                {password: params.password}
+            ]
+        },
+        attributes:{ exclude: ['createdAt','updatedAt'] } //esto hasta que se cree el login
+    }
+    await Users.findOne(options)
+    .then(( user) => {
+        if (user) {
+            return res.status(200).send({
+                status:'logeo correcto',
+                user
+            })
+        } else {
+            return res.status(403).send({
+                status:'credenciales incorrectas'
+            })
+        }
+    }).catch((err) => {
+        return res.status(500).send({
+            status:'Error',
+            message: `Error al extraer los datos: ${err}`
         })
     })
 }
@@ -59,4 +90,4 @@ const getUsers = async ( req,res) => {
 }
 
 
-export {create, getUsers};
+export {create, login, getUsers };

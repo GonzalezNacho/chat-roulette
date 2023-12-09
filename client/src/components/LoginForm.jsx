@@ -1,5 +1,7 @@
 import { useState } from "react"
 import './LoginForm.css'
+import { url } from '../assets/js/const'
+import axios from "axios"
 
 export default function Login() {
     const [body, setBody] = useState({email:'', password:''})
@@ -14,7 +16,18 @@ export default function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(body)
+
+        axios.post(url + 'user/login', body)
+        .then((res) => {
+            console.log(res.data.status)
+            console.log(res.data.user)
+        })
+        .catch((err) => {
+            if (err.response.status == 403) {
+                alert (err.response.data.status)
+            }
+            console.log(err)
+        })
     }
 
 

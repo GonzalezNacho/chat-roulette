@@ -1,10 +1,9 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import {ip, port} from '../assets/js/const'
+import {url} from '../assets/js/const'
 
 export function useMessages( {socket} ) {
-    
-    const url = `${ip}:${port}/`
+
     const [message, setMessage] = useState('')
     const [messages, setMessages] = useState([])
 
@@ -31,5 +30,5 @@ export function useMessages( {socket} ) {
         setFirstTime(true)
     }
 
-    return { message, setMessage, messages, setMessages, storedMessages, url}
+    return { message, setMessage, messages, setMessages, storedMessages}
 }
