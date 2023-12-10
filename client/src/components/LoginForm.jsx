@@ -2,9 +2,11 @@ import { useState } from "react"
 import './LoginForm.css'
 import { url } from '../assets/js/const'
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
-export default function Login() {
+export default function Login({isLogin,user}) {
     const [body, setBody] = useState({email:'', password:''})
+    const navigate = useNavigate();
 
     const inputChange = ({target}) => {
         const {name, value} = target
@@ -21,6 +23,9 @@ export default function Login() {
         .then((res) => {
             console.log(res.data.status)
             console.log(res.data.user)
+            user.current = res.data.user.user
+            isLogin.current = true
+            navigate("/chat")
         })
         .catch((err) => {
             if (err.response.status == 403) {

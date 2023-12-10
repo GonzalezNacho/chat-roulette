@@ -4,18 +4,18 @@ import { Chatform } from '../components/Chatform'
 import { Messages } from '../components/Messages'
 import { useAuth0 } from "@auth0/auth0-react";
 import { PropTypes } from 'prop-types'
-import { ip, port } from '../assets/js/const'
+import { ip, port, url } from '../assets/js/const'
 
 
 //Conexion para escuchar y enviar los eventos
 const socket = io(`${ip}:${port}`)
 
-export function Chat({isLogin}) {
+export function Chat ({isLogin, user}) {
 
-    const { user } = useAuth0();
-    const { message, messages, storedMessages, setMessage, setMessages, url } = useMessages({socket})
+    /*const { user } = useAuth0();*/
+    const { message, messages, storedMessages, setMessage, setMessages } = useMessages({socket})
     
-
+    console.log(user.current)
     return (
             isLogin.current ?
             <div className='App'>
@@ -23,7 +23,7 @@ export function Chat({isLogin}) {
                         <div className='card'>
                             <div className='card-body'>
                                 <h2 className='text-center'>chat</h2>
-                                <Chatform nickname={user.name} socket={socket} message={message} messages={messages} setMessage={setMessage} setMessages={setMessages} url={url}/>
+                                <Chatform nickname={user.current} socket={socket} message={message} messages={messages} setMessage={setMessage} setMessages={setMessages} url={url}/>
                             </div>
                         </div>
 
@@ -32,7 +32,7 @@ export function Chat({isLogin}) {
                         <div className='card mt-3 mb-3' id='content-chat'>
                             <Messages messages={messages} />
                             <small className='text-center text-muted p-3'>... Mensajes guardados ...</small>
-                            <Messages messages={storedMessages} nickname={user.name}/>
+                            <Messages messages={storedMessages} nickname={user.current}/>
                         </div>
                     </div>
                 </div>
@@ -42,5 +42,6 @@ export function Chat({isLogin}) {
 }
 
 Chat.propTypes = {
-    isLogin: PropTypes.object.isRequired
+    isLogin: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired
 }

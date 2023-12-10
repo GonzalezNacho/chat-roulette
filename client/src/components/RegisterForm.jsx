@@ -2,6 +2,7 @@ import { useState } from "react"
 import axios from "axios"
 import { url } from "../assets/js/const"
 import './LoginForm.css'
+import { redirect } from "react-router-dom"
 
 export default function Register() {
     const [body, setBody] = useState({name:'',lastname:'',user:'',email:'', password:''})
@@ -19,6 +20,7 @@ export default function Register() {
 
         axios.post(url + 'user', body).then((res)=> {
             alert(res.data.status)
+            redirect('/login')
         })
     }
 
