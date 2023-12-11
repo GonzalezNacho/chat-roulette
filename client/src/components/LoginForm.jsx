@@ -1,13 +1,15 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import './LoginForm.css'
 import { url } from '../assets/js/const'
 import axios from "axios"
+import { UserContext } from "../context/user"
+import { loginToStorage } from "../assets/js/localStorage"
 import { useNavigate } from "react-router-dom"
 
-export default function Login({isLogin,user}) {
+export default function Login() {
     const [body, setBody] = useState({email:'', password:''})
-    const navigate = useNavigate();
-
+    const { setLogin } = useContext(UserContext)
+    const navigate = useNavigate()
     const inputChange = ({target}) => {
         const {name, value} = target
         setBody({
@@ -21,10 +23,14 @@ export default function Login({isLogin,user}) {
 
         axios.post(url + 'user/login', body)
         .then((res) => {
+            const user =res.data.user.user
             console.log(res.data.status)
             console.log(res.data.user)
-            user.current = res.data.user.user
-            isLogin.current = true
+            setLogin({
+                user: user,
+                isLogin: true
+            })
+            loginToStorage({user, isLogin: true})
             navigate("/chat")
         })
         .catch((err) => {

@@ -1,12 +1,23 @@
 /*import LogoutButton from "./Logout"
 import LoginButton  from "./Login"
 import { useAuth0 } from "@auth0/auth0-react";*/
-import { redirect } from 'react-router-dom'
+import { useContext } from 'react'
+import { UserContext } from '../context/user'
+import { logoutToStorage } from '../assets/js/localStorage'
 
-export function Header ({isLogin, user}) {
+export function Header () {
 
     //const { user, isAuthenticated } = useAuth0();
+    const {login, setLogin} = useContext(UserContext)
 
+    const handleClick = () => {
+        setLogin({
+            user: null, 
+            isLogin: false
+        })
+        logoutToStorage()
+        window.location.replace("/");
+    }
     /*if(isAuthenticated) {
         isLogin.current = true
     }*/
@@ -36,10 +47,10 @@ export function Header ({isLogin, user}) {
                         )
                     */} 
                     {
-                        isLogin.current ? (
+                        login.isLogin ? (
                             <>
-                                <h4>{user.current}</h4> 
-                                <button className="btn btn-success" onClick={() => alert('deslogueo') }>Log Out</button>
+                                <h4>{login.user}</h4> 
+                                <button className="btn btn-success" onClick={handleClick}>Log Out</button>
                             </>
                         ): (
                             <>
