@@ -2,10 +2,11 @@ import { useState } from "react"
 import axios from "axios"
 import { url } from "../assets/js/const"
 import './LoginForm.css'
-import { redirect } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 export default function Register() {
     const [body, setBody] = useState({name:'',lastname:'',user:'',email:'', password:''})
+    const navigate = useNavigate()
 
     const inputChange = ({target}) => {
         const {name, value} = target
@@ -20,7 +21,7 @@ export default function Register() {
 
         axios.post(url + 'user', body).then((res)=> {
             alert(res.data.status)
-            redirect('/login')
+            navigate('/login')
         })
     }
 

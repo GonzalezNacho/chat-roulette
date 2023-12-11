@@ -3,7 +3,6 @@ import { Header } from './components/Header.jsx';
 import { Footer } from './components/Footer.jsx'
 import { Bienvenido } from './routes/Bienvenida.jsx'
 import { Contacto } from './routes/Contacto.jsx';
-import { Chat } from './routes/Chat.jsx'
 import { Roulette } from './routes/Roulette.jsx'
 import ErrorPage from './routes/error-page.jsx';
 import { createBrowserRouter,RouterProvider } from "react-router-dom";
