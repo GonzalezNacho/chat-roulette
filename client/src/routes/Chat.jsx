@@ -1,18 +1,16 @@
-import { io } from 'socket.io-client';
 import { useMessages } from '../hooks/useMessages'
 import { Chatform } from '../components/Chatform'
 import { Messages } from '../components/Messages'
 import { useAuth0 } from "@auth0/auth0-react";
 import { PropTypes } from 'prop-types'
-import { ip, port, url } from '../assets/js/const'
 import { UserContext } from '../context/user';
 import { useContext } from 'react';
+import { url } from '../assets/js/const'
 
 
-//Conexion para escuchar y enviar los eventos
-const socket = io(`${ip}:${port}`)
 
-export function Chat () {
+
+export function Chat ({ socket }) {
 
     /*const { user } = useAuth0();*/
     const { login } = useContext(UserContext)
@@ -20,23 +18,23 @@ export function Chat () {
     return (
             login.isLogin ?
             <div className='App'>
-                    <div className='container mt-3'>
-                        <div className='card'>
-                            <div className='card-body'>
-                                <h2 className='text-center'>chat</h2>
-                                <Chatform nickname={login.user} socket={socket} message={message} messages={messages} setMessage={setMessage} setMessages={setMessages} url={url}/>
-                            </div>
-                        </div>
-
-                        {/* Chat messages */}
-
-                        <div className='card mt-3 mb-3' id='content-chat'>
-                            <Messages messages={messages} />
-                            <small className='text-center text-muted p-3'>... Mensajes guardados ...</small>
-                            <Messages messages={storedMessages} nickname={login.user}/>
+                <div className='container mt-3'>
+                    <div className='card'>
+                        <div className='card-body'>
+                            <h2 className='text-center'>Chat</h2>
+                            <Chatform nickname={login.user} socket={socket} message={message} messages={messages} setMessage={setMessage} setMessages={setMessages} url={url}/>
                         </div>
                     </div>
+
+                    {/* Chat messages */}
+
+                    <div className='card mt-3 mb-3' id='content-chat'>
+                        <Messages messages={messages} />
+                        <small className='text-center text-muted p-3'>... Mensajes guardados ...</small>
+                        <Messages messages={storedMessages} nickname={login.user}/>
+                    </div>
                 </div>
+            </div>
             :
             <h3>Esperando la autenticacion</h3>
     )

@@ -3,12 +3,10 @@ import { Op } from 'sequelize';
 
 const create = async (req, res) => {
     let params = req.body
-    console.log(params)
-    /*const [user, created] = await*/ 
     Users.findOrCreate({
         where :{
             /*[Op.or]: [
-                {email: params.email},
+                {email: params.email},                  lo probamos al final
                 {user: params.user}
             ]*/
             email: params.email
@@ -49,7 +47,7 @@ const login = async ( req,res) => {
                 {password: params.password}
             ]
         },
-        attributes:{ exclude: ['createdAt','updatedAt'] } //esto hasta que se cree el login
+        attributes:{ exclude: ['createdAt','updatedAt'] }
     }
     await Users.findOne(options)
     .then(( user) => {
@@ -73,7 +71,7 @@ const login = async ( req,res) => {
 
 const getUsers = async ( req,res) => {
     let options = {
-        attributes:{ exclude: ['createdAt','updatedAt'] } //esto hasta que se cree el login
+        attributes:{ exclude: ['createdAt','updatedAt'] }
     }
     await Users.findAll(options)
     .then(( users) => {

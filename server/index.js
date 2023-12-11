@@ -32,20 +32,22 @@ io.on('connection', (socket) => {
     console.log('cliente conectado')
 
     socket.on('create room', () => {
+        const thisRoom = "room" + rooms
         socket.join("room" + rooms)
         rooms++;
     })
 
     socket.on('join room', () => {
+        const thisRoom = "room" + rooms
         socket.join('room' + getRandomInt(rooms))
     })
 
     socket.on('message',(message,nickname) =>{
         //Envio al resto de clientes 
-        const roomsDeEsteSocket = Object.keys(socket.rooms);
-        console.log('El socket está en las siguientes salas:', roomsDeEsteSocket);
+        const roomDeEsteSocket = Array.from(socket.rooms);
+        console.log('El socket está en las siguientes salas:', roomDeEsteSocket[1]);
         
-        socket.broadcast.emit('message', {
+        socket.to(roomDeEsteSocket).emit('message', {
             body: message,
             from: nickname
         })

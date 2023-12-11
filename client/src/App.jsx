@@ -12,8 +12,7 @@ import Register from './components/RegisterForm.jsx';
 
 function App() {
 
-  /*const isLogin= useRef(false)
-  const user = useRef('')*/
+  
   const router = createBrowserRouter([
     {
       path: "/",
@@ -26,10 +25,6 @@ function App() {
     },
     {
       path: "chat",
-      element: <Chat/>
-    },
-    {
-      path: "ruleta",
       element: <Roulette/>
     },
     {

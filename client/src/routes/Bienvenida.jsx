@@ -2,10 +2,10 @@ export function Bienvenido() {
     
     return (
         <>
-            <h1>Bienvenido a Chat random</h1>    
+            <h1>Bienvenido a Chat Roulette</h1>    
             <section className="conteiners-divs">
                 <div>
-                    <h1>Chat random</h1>
+                    <h1>Chat Roulette</h1>
                     <p>Chat Ramdon es una excelente manera de conocer nuevos amigos.Cuando usa chat Ramdon se le empareja con otra persona para hablar uno a uno.Si lo prefiere , puede agregar sus intereses y sera emparejado al azar con alguien que selecciono algunos de sus mismos intereses</p>
                 </div>
                 <div>
