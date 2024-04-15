@@ -94,6 +94,9 @@ header .nav-links li:hover {
   height: 78vh; /* Ajusta la altura según tus necesidades */
   margin: auto;
   padding: 40px; /* Agrega un espacio inferior para el footer */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .container {
