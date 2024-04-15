@@ -1,45 +1,50 @@
 import './App.css'
-import { Header } from './components/Header.jsx';
 import { Footer } from './components/Footer.jsx'
 import { Bienvenido } from './routes/Bienvenida.jsx'
 import { Contacto } from './routes/Contacto.jsx';
 import { Roulette } from './routes/Roulette.jsx'
-import ErrorPage from './routes/error-page.jsx';
-import { createBrowserRouter,RouterProvider } from "react-router-dom";
-import Login from './components/LoginForm.jsx';
-import Register from './components/RegisterForm.jsx';
+import { useState } from 'react';
+import { useAuth0 } from "@auth0/auth0-react";
+import  LoginButton  from './components/Login.jsx'
+import LogoutButton from './components/Logout.jsx'
+
+const renderItem = new Map()
+renderItem.set(1, <Bienvenido/>)
+renderItem.set(2, <Roulette/>)
+renderItem.set(3, <Contacto/>)
 
 function App() {
 
-  
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Bienvenido />,
-      errorElement: <ErrorPage />
-    },
-    {
-      path: "contacto",
-      element: <Contacto />
-    },
-    {
-      path: "chat",
-      element: <Roulette/>
-    },
-    {
-      path: "login",
-      element: <Login/>
-    },
-    {
-      path:"register",
-      element: <Register/>
-    }
-  ]);
+  const { user, isAuthenticated } = useAuth0();
+  const [item, setItem] = useState(1)
 
   return (
     <>
-      <Header/>
-      <RouterProvider router={router}/>
+      <header className="header">
+        <div className="logo">
+            <img src='src/assets/img/chatW.png' alt="logo"/>
+        </div>
+        <nav>
+            <ul className="nav-links">
+                <li><a onClick={() => setItem(1)}>Inicio</a></li>
+                <li><a onClick={() => setItem(2)}>Chatear</a></li>
+                <li><a onClick={() => setItem(3)}>Contacto</a></li>
+            </ul>
+        </nav>
+        <div className="botones">
+            {
+              isAuthenticated ? (
+                  <> 
+                      <h4>{user.name}</h4> 
+                      <LogoutButton />
+                  </>
+              ) : (
+                  <LoginButton/>
+              )
+            } 
+        </div>        
+      </header>
+      {renderItem.get(item)}
       <Footer/>
     </>
   )

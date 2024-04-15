@@ -1,5 +1,5 @@
-import { useState, useContext } from "react"
-import { UserContext } from '../context/user';
+import { useState } from "react"
+import { useAuth0 } from "@auth0/auth0-react";
 import { ip, port } from '../assets/js/const'
 import { Chat } from "./Chat";
 import { io } from 'socket.io-client';
@@ -11,7 +11,7 @@ const socket = io(`${ip}:${port}`)
 export function Roulette() {
 
     const [roomSelected, setRoomSelected] = useState(false)
-    const { login } = useContext(UserContext)
+    const { isAuthenticated } = useAuth0();
 
     const handlerClickUnirse = () => {
         setRoomSelected(true)
@@ -24,7 +24,7 @@ export function Roulette() {
     }
 
     return (
-        login.isLogin ?
+        isAuthenticated ?
             roomSelected ?
             <Chat socket={socket}/>
             :
