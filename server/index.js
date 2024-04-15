@@ -21,7 +21,18 @@ sequelize.sync().then(() => {
 })
 
 let rooms = 0;
+/*TODO: arreglar lo de los rooms
 
+const rooms = new Map()
+rooms.set('room0',['prueba'])
+rooms.set('room1',['prueba 1'])
+rooms.set('room0',[...rooms.get('room0'),'prueba 2'])
+
+
+console.log(rooms.get('room0'))
+console.log(rooms.get('room1'))
+
+*/ 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
