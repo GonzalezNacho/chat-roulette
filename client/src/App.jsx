@@ -44,7 +44,8 @@ function App() {
             } 
         </div>        
       </header>
-      {renderItem.get(item)}
+      <div className="content">{renderItem.get(item)}</div>
+      
       <Footer/>
     </>
   )
