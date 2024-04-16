@@ -1,0 +1,6 @@
+#crear-sala:hover ,#unirse:hover {
+    background-color: white;
+    color: rgb(38, 108, 170);
+    border: solid 2px rgb(38, 108, 170);
+    cursor: pointer;
+}

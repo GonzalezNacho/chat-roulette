@@ -85,7 +85,6 @@ header .nav-links li:hover {
 }
 
 .header .nav-links a:hover {
-
   text-decoration: none;
 }
 
@@ -104,105 +103,9 @@ header .nav-links li:hover {
   margin: auto;
 }
 
-h1 {
+h1, h2 {
   text-align: center;
   font-family:'Russo One', sans-serif;
-}
-
-.form-group {
-  margin-bottom: 10px;
-}
-
-.form-group label {
-  display: block;
-  font-weight: bold;
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-}
-
-.form-group textarea {
-  height: 150px;
-}
-
-.form-group button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-/* Estilos del footer */
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 10vh; /* Ajusta la altura según tus necesidades */
-  background-color: #f1f1f1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.footer img {
-  width: 20px;
-  margin: 0 5px;
-}
-
-.footer a {
-  text-decoration: none;
-  color: #333;
-}
-
-.footer a:hover {
-  color: #000;
-}
-
-.author {
-  font-weight: bold;
-}
-
-.subscribe {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 10px;
-}
-
-.subscribe p {
-  margin-right: 5px;
-}
-
-.subscribe-input {
-  display: flex;
-  align-items: center;
-}
-
-.subscribe-input input[type="email"] {
-  margin-right: 5px;
-  padding: 5px;
-  border: 1px solid #333;
-  border-radius: 5px;
-}
-
-.subscribe-input button {
-  padding: 5px 10px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 /* Estilos del home */
@@ -224,13 +127,6 @@ h1 {
   padding: 20px;
 }
 
-#crear-sala:hover ,#unirse:hover {
-  background-color: white;
-  color: rgb(38, 108, 170);
-  border: solid 2px rgb(38, 108, 170);
-  cursor: pointer;
-}
-
 .conteiners-divs > div h1 {
   margin-top: 0;
   font-family:'Russo One', sans-serif;
@@ -240,95 +136,4 @@ h1 {
 .conteiners-divs > div p {
   margin-bottom: 0;
   font-size: 1.3rem;
-}
-/* estilo caja de chat*/
-.chat-box {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch; /* Ajusta el ancho de los elementos internos al 100% del cuadro de chat */
-  justify-content: center;
-  height: 50vh; /* Por defecto en PC */
-  max-width: 80%; /* Por defecto en móvil */
-  margin: 0 auto;
-  border: 2px solid #ddd; /* Agrega un borde de color */
-  border-radius: 10px; /* Agrega bordes redondeados */
-  padding: 20px; /* Aumenta el espacio interno */
-}
-
-@media (min-width: 600px) {
-  .chat-box {
-    height: 50vh;
-    max-width: 50%;
-  }
-}
-
-.messages {
-  overflow-y: auto; /* Cambia a auto para mostrar barras de desplazamiento solo cuando sea necesario */
-  flex-grow: 1;
-}
-
-.message {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.message-content {
-  background-color: #F2F2F2;
-  padding: 10px;
-  border-radius: 10px;
-  max-width: 80%;
-}
-
-.user-image {
-  width: 40px;
-  height: 40px;
-  margin: 0 10px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.user-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.left {
-  justify-content: flex-start;
-}
-
-.right {
-  justify-content: flex-end;
-}
-
-.input-area {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  background-color: #F2F2F2;
-}
-
-.input-area input[type="text"] {
-  flex-grow: 1;
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
-  margin-right: 10px;
-}
-
-.input-area button {
-  padding: 5px 10px;
-  background-color: #4CAF50;
-  color: white;
-  border: none
-}
-.input-area .NEXT{
-  padding: 5px 10px;
-  background-color: red;
-  color: white;
-  border: none;
-  margin-left: 10px;
 }

@@ -10,7 +10,7 @@ export function Chat ({ socket }) {
     const { message, messages, storedMessages, setMessage, setMessages } = useMessages({socket})
     return (
         isAuthenticated ?
-            <div className='App'>
+            <div>
                 <div className='container mt-3'>
                     <div className='card'>
                         <div className='card-body'>
