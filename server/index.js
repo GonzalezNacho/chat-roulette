@@ -50,7 +50,7 @@ io.on('connection', (socket) => {
         const roomDeEsteSocket = Array.from(socket.rooms);
         if (roomDeEsteSocket[1]) {
             rooms.salir(roomDeEsteSocket[0], roomDeEsteSocket[1]);
-            console.log(`El socket ${roomDeEsteSocket[0]} se desconecto de las siguientes salas: ${roomDeEsteSocket[1]}`); // the Set contains at least the socket ID
+            console.log(`El socket ${roomDeEsteSocket[0]} se desconecto de las siguientes salas: ${roomDeEsteSocket[1]}`);
         } else {
             console.log(`El socket ${roomDeEsteSocket[0]} se desconecto`);
         }
