@@ -2,6 +2,7 @@ import http from 'http'
 import app from './app.js'
 import { connectDb, sequelize } from './utils/db.js'
 import { Server as socketServer } from 'socket.io'
+import { Rooms } from './utils/rooms.js'
 
 const PORT = 4001
 
@@ -20,38 +21,40 @@ sequelize.sync().then(() => {
     console.log('error', error)
 })
 
-let rooms = 0;
-/*TODO: arreglar lo de los rooms*/ 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-}
+const rooms = new Rooms();
 
 
 io.on('connection', (socket) => {
-    console.log(socket.id)
-    console.log('cliente conectado')
+    console.log(`cliente conectado, con el id: ${socket.id}`)
 
     socket.on('create room', () => {
-        const thisRoom = "room" + rooms
-        socket.join("room" + rooms)
-        rooms++;
+        socket.join(rooms.crear(socket.id))
     })
 
     socket.on('join room', () => {
-        const thisRoom = "room" + rooms
-        socket.join('room' + getRandomInt(rooms))
+        socket.join(rooms.unirse(socket.id))
     })
 
     socket.on('message',(message,nickname) =>{
         //Envio al resto de clientes 
         const roomDeEsteSocket = Array.from(socket.rooms);
-        console.log('El socket está en las siguientes salas:', roomDeEsteSocket[1]);
+        console.log(`El socket ${roomDeEsteSocket[0]} está enviando mensaje a las siguientes salas: ${roomDeEsteSocket[1]}`);
         
         socket.to(roomDeEsteSocket).emit('message', {
             body: message,
             from: nickname
         })
     })
+
+    socket.on("disconnecting", () => {
+        const roomDeEsteSocket = Array.from(socket.rooms);
+        if (roomDeEsteSocket[1]) {
+            rooms.salir(roomDeEsteSocket[0], roomDeEsteSocket[1]);
+            console.log(`El socket ${roomDeEsteSocket[0]} se desconecto de las siguientes salas: ${roomDeEsteSocket[1]}`); // the Set contains at least the socket ID
+        } else {
+            console.log(`El socket ${roomDeEsteSocket[0]} se desconecto`);
+        }
+    });
 })
 
 server.listen(PORT, () => {
