@@ -111,7 +111,6 @@ h1, h2 {
 /* Estilos del home */
 .conteiners-divs {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
 }
 

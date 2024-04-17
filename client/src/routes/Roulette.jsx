@@ -6,7 +6,7 @@ import { Chat } from "./Chat";
 import { io } from 'socket.io-client';
 
 //Conexion para escuchar y enviar los eventos
-const socket = io(`${ip}:${port}`)
+//const socket = io(`${ip}:${port}`)
 
 
 export function Roulette() {
