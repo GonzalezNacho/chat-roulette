@@ -90,12 +90,11 @@ header .nav-links li:hover {
 
 /* Estilos del contenido principal */
 .content {
-  height: 78vh; /* Ajusta la altura según tus necesidades */
-  margin: auto;
-  padding: 40px; /* Agrega un espacio inferior para el footer */
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: space-between;
+  height: 78%;
 }
 
 .container {
@@ -119,20 +118,20 @@ h1, h2 {
   color: white;
   background-color: rgb(38, 108, 170);
   margin: 20px;
-  text-align: center;
-  width: calc(50% - 40px); /* Ajusta el ancho según tus necesidades */
+  text-align: justify;
+  width: calc(40% - 40px); /* Ajusta el ancho según tus necesidades */
   max-width: 600px; /* Limita el ancho máximo */
   min-width: 300px; /* Establece un ancho mínimo */
   padding: 20px;
 }
 
-.conteiners-divs > div h1 {
+.conteiners-divs > div h2 {
   margin-top: 0;
   font-family:'Russo One', sans-serif;
-  font-size: 50px;
+  font-size: 30px;
 }
 
 .conteiners-divs > div p {
   margin-bottom: 0;
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
