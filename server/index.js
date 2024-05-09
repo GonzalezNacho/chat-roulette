@@ -16,7 +16,7 @@ const io = new socketServer (server, {
 connectDb()
 
 sequelize.sync().then(() => {
-    console.log('\n\t\t\t\t\t\t******************\n\t\t\t\t\t\t* Tablas creadas *\n\t\t\t\t\t\t******************\n')
+    console.log('\n\t\t\t\t\t\t********************\n\t\t\t\t\t\t*  Tablas creadas  *\n\t\t\t\t\t\t********************\n')
 }).catch((error) => {
     console.log('error', error)
 })
@@ -35,7 +35,7 @@ io.on('connection', (socket) => {
         socket.join(rooms.unirse(socket.id))
     })
 
-    socket.on('message',(message,nickname) =>{
+    socket.on('message',(message,nickname) => {
         //Envio al resto de clientes 
         const roomDeEsteSocket = Array.from(socket.rooms);
         console.log(`El socket ${roomDeEsteSocket[0]} está enviando mensaje a las siguientes salas: ${roomDeEsteSocket[1]}`);

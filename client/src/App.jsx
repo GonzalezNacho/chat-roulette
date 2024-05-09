@@ -44,7 +44,9 @@ function App() {
             } 
         </div>        
       </header>
+      
       {renderItem.get(item)}
+      
       
       <Footer/>
     </>
