@@ -11,7 +11,7 @@ export function Chat ({ socket }) {
     return (
         isAuthenticated ?
             <div>
-                <div className='container mt-3'>
+                <div className='container mt-3 mb-3'>
                     <div className='card'>
                         <div className='card-body'>
                             <h2 className='text-center'>Chat</h2>
@@ -21,7 +21,7 @@ export function Chat ({ socket }) {
 
                     {/* Chat messages */}
 
-                    <div className='card mt-3 mb-3' id='content-chat'>
+                    <div className='card mt-3 mb-5' id='content-chat'>
                         <Messages messages={messages} />
                         <small className='text-center text-muted p-3'>... Mensajes guardados ...</small>
                         <Messages messages={storedMessages} nickname={user.name}/>

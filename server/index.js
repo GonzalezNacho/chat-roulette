@@ -23,7 +23,6 @@ sequelize.sync().then(() => {
 
 const rooms = new Rooms();
 
-
 io.on('connection', (socket) => {
     console.log(`cliente conectado, con el id: ${socket.id}`)
 
