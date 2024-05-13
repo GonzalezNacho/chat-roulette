@@ -1,1 +1,29 @@
 /* TODO crear estilos para el chat*/
+.content-chat {
+    max-width: 500px;
+    margin: 1rem auto;
+}
+
+h2, h3 {
+    color: #000;
+    text-align: center;
+}
+
+.chat-form {
+    padding: 1rem;
+    color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.175);
+    border-radius: 0.375rem;
+}
+
+small {
+    display: block;
+    color: rgba(33, 37, 41, 0.75);
+    padding: 1rem;
+    text-align: center;
+}
+
+#content-chat {
+    margin-top: 1rem;
+    margin-bottom: 10vh;
+}
