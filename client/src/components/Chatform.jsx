@@ -28,10 +28,8 @@ export function Chatform ({nickname, socket, message, messages, setMessage, setM
 
     return (
         <form onSubmit={handlerSubmit}>
-            <div className='d-flex'>
-                <input type="text" className='form-control' placeholder='Mensaje...' id='message-input' onChange={e => setMessage(e.target.value)} value={message}/>
-                <button className='btn btn-success mx-3' type='submit' id='btn-message'>Enviar</button>
-            </div>
+            <input type="text" placeholder='Mensaje...' id='message-input' onChange={e => setMessage(e.target.value)} value={message}/>
+            <button type='submit' id='btn-message'>Enviar</button>
         </form>
     )
 }
