@@ -26,11 +26,11 @@ body {
 }
 
 .header .logo {
-  cursor: pointer;
+  display: flex;
 }
 
 .header .logo img {
-  height: 70px;
+  height: 60px;
   width: auto;
   transition: all 0.3s;
 }
@@ -47,10 +47,12 @@ body {
 .header .nav-links li {
   display: inline-block;
   padding: 0px 25px;
+  transition: all 0.3s;
 }
 
 header .nav-links li:hover {
-  transform: scale(1.5);
+  transform: scale(1.2);
+  cursor: pointer;
 }
 
 .header .nav-links a {
@@ -62,10 +64,20 @@ header .nav-links li:hover {
   display: flex;
   flex-direction: row;
   gap: 20px;
+  height: 75%;
 }
 
 .header .botones h4 {
-  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  max-width: 100px;
+}
+
+.header .botones img {
+  height: 50px;
+  width: auto;
+  align-self: center;
+  border-radius: 50%;
 }
 
 .header .botones .btn button {

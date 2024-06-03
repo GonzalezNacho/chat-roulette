@@ -18,6 +18,10 @@ function App() {
   const { user, isAuthenticated } = useAuth0();
   const [item, setItem] = useState(1)
 
+  if (isAuthenticated) {
+    console.log(user)
+  }
+
   return (
     <>
       <header className="header">
@@ -35,7 +39,8 @@ function App() {
             {
               isAuthenticated ? (
                   <> 
-                      <h4>{user.name}</h4> 
+                      <h4>Hola, {user.given_name}</h4>
+                      <img src={user.picture} alt="profile"/>
                       <LogoutButton />
                   </>
               ) : (
