@@ -54,3 +54,29 @@ h2 {
     text-align: center;
     padding: 1rem;
 }
+
+.content-chat .messages {
+    display: flex;
+}
+
+.content-chat .messages small {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.175);
+    border-radius: 0.375rem;
+}
+.content-chat .my-message{
+    text-align: right;
+    justify-content: end;
+}
+
+.content-chat .my-message small{
+    background-color: rgba(25, 135, 84, 0.25);
+}
+
+.content-chat .other-message small{
+    color: rgba(33, 37, 41, 0.75);;
+    text-align: left;
+    justify-content: start;
+    background-color: rgb(248, 249, 250);
+}
